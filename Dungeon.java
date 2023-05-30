@@ -6,6 +6,13 @@ public class Dungeon {
 	int difficulty;// the difficulty of the dungeon
 	ArrayList<Character> monsterList;// the list of monsters in this dungeon
 	
+	public Dungeon(String name, int difficulty, ArrayList<Character> monsterList) {
+		
+		this.name = name;
+        this.difficulty = difficulty;
+        this.monsterList = monsterList;
+	}
+	
 	void spawnList(){// sets the monsterlist that the dungeon has based on the difficulty of the dungeon
 		
 		if(difficulty == 1)
