@@ -1,5 +1,6 @@
 // Author: Chris He
 // Date: 5/29/2023
+
 /*
 AdventureGameItem sword = new AdventureGameItem("Sword", "A sharp weapon for battles");
 System.out.println(sword.getName()); // Output: Sword
