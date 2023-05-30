@@ -1,0 +1,17 @@
+package Characters;
+
+public class MainCharacter extends Character{
+
+	public MainCharacter(int attackDamage, int abilityPower, int hp, int money) {
+		super(attackDamage, abilityPower, hp, 0);
+	}
+	
+	public void buyItem(Item item) {
+
+		
+		
+	}	
+	public void die() {
+		
+	}
+}
