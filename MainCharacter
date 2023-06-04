@@ -4,14 +4,15 @@
 import java.util.ArrayList;
 
 public class MainCharacter {
-	private int attackDamage, abilityPower, hp, money, defense;
+	private int attackDamage, abilityPower, hp, money, defense, mana;
 	boolean isAlive = true;
 	ArrayList<Item> inventory = new ArrayList<Item>();
 	
-	public MainCharacter(int ad, int ap, int hp, int money) {
+	public MainCharacter(int ad, int ap, int hp, int money, int mana) {
 		attackDamage = ad;
 		abilityPower = ap;
 		this.hp = hp;
+		this.mana = mana;
 	}
 	
 	// attack
@@ -20,7 +21,7 @@ public class MainCharacter {
 	}
 	
 	public void attackAP(Enemy e) {
-		e.takeADDamage(abilityPower);
+		e.takeAPDamage(abilityPower);
 	}
 	
 	// defense
@@ -37,7 +38,7 @@ public class MainCharacter {
         return abilityPower;
     }
     
-    public void setAP(int abilityPower) {
+    public void setAbilityPower(int abilityPower) {
         this.abilityPower = abilityPower;
     }
     
@@ -49,7 +50,6 @@ public class MainCharacter {
     public void setAttackDamage(int attackDamage) {
         this.attackDamage = attackDamage;
     }
-    
 	
 	// money
 	public int getMoney() {
@@ -60,23 +60,33 @@ public class MainCharacter {
 		this.money = money;
 	}
 	
-	// calculate and get stats
+	// mana
+	public int getMana() {
+		return mana;
+	}
+	
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+	
+	// hp
+	public int getHP() {
+		return hp;
+	}
+	
+	public void setHP(int hp) {
+		this.hp = hp;
+	}
+	
+	// stats
 	public int calculateTotalAD() {
 		int total = 0;
-		
-		for(int i = 0; i < inventory.size(); i ++) {
-			total += inventory.get(i).getAD();
-		}
 		
 		return total;
 	}
 	
 	public int calculateTotalAP() {
 		int total = 0;
-		
-		for(int i = 0; i < inventory.size(); i ++) {
-			total += inventory.get(i).getAP();
-		}
 		
 		return total;
 	}
