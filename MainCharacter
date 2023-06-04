@@ -1,17 +1,62 @@
-package Characters;
+// Author: Franklin Wang, Chris He
+// Date: 6/4/2023
 
-public class MainCharacter extends Character{
+import java.util.ArrayList;
 
-	public MainCharacter(int attackDamage, int abilityPower, int hp, int money) {
-		super(attackDamage, abilityPower, hp, 0);
+public class MainCharacter {
+	int attackDamage, abilityPower, hp, money;
+	boolean isAlive = true;
+	ArrayList<Item> inventory = new ArrayList<Item>();
+	
+	public MainCharacter(int ad, int ap, int hp, int money) {
+		attackDamage = ad;
+		abilityPower = ap;
+		this.hp = hp;
 	}
 	
-	public void buyItem(Item item) {
+	public void attackAD(Enemy e) {
+		e.takeADDamage(attackDamage);
+	}
+	
+	public void attackAP(Enemy e) {
+		e.takeAPDamage(abilityPower);
+	}
+	
+	public int calculateTotalAD() {
+		int total = 0;
+		
+		for(int i = 0; i < inventory.size(); i ++) {
+			total += inventory.get(i).getAD();
+		}
+		
+		return total;
+	}
+	
+	public int calculateTotalAP() {
+		int total = 0;
+		
+		for(int i = 0; i < inventory.size(); i ++) {
+			total += inventory.get(i).getAP();
+		}
+		
+		return total;
+	}
+	
+	public int calculateTotalHP() {
+		int total = 0;
+		
+		return total;
+	}
+	
+	public void takeDamage(int damage) {
+		hp = hp - damage;
+		
+		if(hp <= 0) {
+			die();
+		}
+	}
 
-		
-		
-	}	
 	public void die() {
-		
+		isAlive = false;
 	}
 }
