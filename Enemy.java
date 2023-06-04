@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
+//Nishad Yedunuthula
 public class Enemy {
-
 	
 	int attack;
 	int defense;
@@ -32,12 +32,10 @@ public class Enemy {
 	}
 	
 	void takeAPDamage(int damage) {
-		
 		hp = hp - damage;
 	}
 	
 	void takeADDamage(int damage) {
-		
 		hp = hp - (defense - damage);
 	}
 	
@@ -61,19 +59,15 @@ public class Enemy {
 		this.hp = hp;
 	}
 	
-	
 	int getAttack() {
-		
 		return attack;
 	}
 	
 	int getDefense() {
-		
 		return defense;
 	}
 
 	int getHp() {
-	
 		return hp;
 	}
 }
