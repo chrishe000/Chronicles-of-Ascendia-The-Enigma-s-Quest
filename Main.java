@@ -1,15 +1,14 @@
+// Author: Franklin Wang, Nishad Yedunuthula
+// 6/4/2023
+
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.RenderingHints;
 import java.util.ArrayList;
-
 import javax.swing.AbstractButton;
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -19,8 +18,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicButtonUI;
-
-//Franklin Wang, Nishad Yedunuthula
 
 class StyledButtonUI extends BasicButtonUI {
 
@@ -45,14 +42,12 @@ class StyledButtonUI extends BasicButtonUI {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g.setColor(new Color(200, 200, 200));
         g.fillRoundRect(0, yOffset, size.width, size.height - yOffset, 10, 10);
-        
         g.setColor(new Color(244, 244, 244));
         g.fillRoundRect(0, yOffset, size.width , size.height + yOffset - 3, 10, 10);
     }
 }
 
 public class Main extends JPanel {
-
 	int width = 300, height = 300;
 	ArrayList<Dungeon> dungeons;
 	MainCharacter character;
@@ -61,10 +56,8 @@ public class Main extends JPanel {
 		JFrame frame = new JFrame();
 		Main m = new Main();
 		
-		
 		frame.setVisible(true);
 		frame.setBounds(0,0,m.width, m.height);
-
 
 		frame.add(m);
 	}
@@ -75,7 +68,7 @@ public class Main extends JPanel {
 		ArrayList<Character> monsterList = new ArrayList<Character>();
 		Dungeon dungeon1 = new Dungeon("ez dungeon", 1, monsterList, options);
 		dungeons.add(dungeon1);
-		this.character = new MainCharacter(0,0,0,0,0);
+		this.character = new MainCharacter(0,0,0,0,0, 0);
 		System.out.println("FASD");
 	}
 	
@@ -83,8 +76,6 @@ public class Main extends JPanel {
 //		while(c.isAlive) {
 //			
 //		} 
-		
-		 
 		
 		/*
 		 * while the game is continuing
@@ -98,7 +89,6 @@ public class Main extends JPanel {
 		 * for each dungeon in DUNGEONS write its text
 		 on the jframe 
 		 
-		 
 		 * */
 	}
 	
@@ -106,8 +96,6 @@ public class Main extends JPanel {
 		super.paint(g);
 		Dungeon randomDungeon = randomDungeon(dungeons);
 		paintDungeon(randomDungeon, g);
-		
-		
 	}
 	
 	public void paintDungeon(Dungeon d, Graphics g) {
@@ -151,6 +139,5 @@ public class Main extends JPanel {
 	
 	public void run(Dungeon[] dungeons, MainCharacter c) {
 		
-	}
-	
+	}	
 }
