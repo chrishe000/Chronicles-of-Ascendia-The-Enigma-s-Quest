@@ -4,20 +4,16 @@
 import java.util.ArrayList;
 
 public class Enemy {
-	int attackDamage;
-	int abilityPower;
-	int defense;
-	String name;
-	int hp;
-	ArrayList<Item> drops;
-	boolean isAlive;
-	int money;
+	private int attackDamage, abilityPower, defense, hp, money;
+	private String name;
+	private ArrayList<Item> drops;
+	private boolean isAlive;
 	
 	public Enemy(int attackDamage, int abilityPower, int defense, String name, int hp, ArrayList<Item> drops, int money) {
 		this.attackDamage = attackDamage;
 		this.abilityPower = abilityPower;
 		this.defense = defense;
-		this.name = name;
+		this.setName(name);
 		this.hp = hp;
 		this.drops = drops;
 		this.money = money;
@@ -47,12 +43,12 @@ public class Enemy {
 	
 	// drop inventory
 	void die(MainCharacter c) {
-		if(hp == 0) {
+		if(hp <= 0) {
 			isAlive = false;
 		}
 		
-		for(Item e: drops) {
-			c.addItem(e);
+		for(Item i: drops) {
+			c.addItem(i);
 		}
 		
 		c.setMoney(c.getMoney() + money);
@@ -98,5 +94,19 @@ public class Enemy {
 	// money
 	int getMoney() {
 		return money;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 }
