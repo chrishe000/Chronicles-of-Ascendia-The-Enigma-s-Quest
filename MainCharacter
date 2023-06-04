@@ -1,4 +1,4 @@
-// Author: Franklin Wang, Chris He, Nishad Yedunuthula
+// Author: Franklin Wang, Chris He
 // Date: 6/4/2023
 
 import java.util.ArrayList;
@@ -139,11 +139,17 @@ public class MainCharacter {
 		progress  = 0;
 	}
 	
+	
 	public void useItem(Item item) {
 		
 		if(item.getUses() < 25) {
     		item.setUses(item.getUses() - 1);
     	}
+		
+		if(item.getUses() == 0) {
+			
+			inventory.remove(item);
+		}
     	
     	hp += item.getHeal();
     	attackDamage += item.getBoostAD();
