@@ -13,6 +13,7 @@ public class Item {
         this.description = description;
     }
 
+    // name
     public String getName() {
         return name;
     }
@@ -21,6 +22,7 @@ public class Item {
         this.name = name;
     }
 
+    // description
     public String getDescription() {
         return description;
     }
@@ -29,6 +31,7 @@ public class Item {
         this.description = description;
     }
 
+    // cost
     public int getCost() {
         return cost;
     }
@@ -37,6 +40,7 @@ public class Item {
         this.cost = cost;
     }
     
+    // ability power
     public int getAP() {
         return ap;
     }
@@ -45,6 +49,7 @@ public class Item {
         this.ap = ap;
     }
     
+    // attack damage
     public int getAD() {
         return ad;
     }
@@ -53,6 +58,7 @@ public class Item {
         this.ad = ad;
     }
 
+    // use
     public void useHealPotion(MainCharacter m) {
         m.hp = 0;
     }
