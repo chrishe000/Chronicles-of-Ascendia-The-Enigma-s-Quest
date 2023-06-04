@@ -11,43 +11,40 @@ public class Enemy {
 	int hp;
 	ArrayList<Item> drops;
 	boolean isAlive;
-	int moneyDrop;
+	int money;
 	
-	public Enemy(int attackDamage, int abilityPower, int defense, String name, int hp, ArrayList<Item> drops, int moneyDrop) {
+	public Enemy(int attackDamage, int abilityPower, int defense, String name, int hp, ArrayList<Item> drops, int money) {
 		this.attackDamage = attackDamage;
 		this.abilityPower = abilityPower;
 		this.defense = defense;
 		this.name = name;
 		this.hp = hp;
 		this.drops = drops;
-		this.moneyDrop = moneyDrop;
+		this.money = money;
 	}
 
 	// attack combined
 	void attackPlayerAP(MainCharacter player, int attack) {
 		int damage =  attack;
 		
-		player.setHp(player.getHp()- damage);
+		player.setHP(player.getHP()- damage);
 	}
 	
 	void attackPlayerAD(MainCharacter player, int attack) {
 		int damage = player.getDefense() - attack;
 		
-		player.setHp(player.getHp()- damage);
+		player.setHP(player.getHP()- damage);
 	}
 	
-	
-	
+	// take damage
 	void takeAPDamage(int damage) {
-		
 		hp = hp - damage;
-		
 	}
 	
 	void takeADDamage(int damage) {
-		
 		hp = hp - (defense - damage);
 	}
+	
 	// drop inventory
 	void die(MainCharacter c) {
 		if(hp == 0) {
@@ -58,10 +55,9 @@ public class Enemy {
 			c.addItem(e);
 		}
 		
-		c.setMoney(c.getMoney() + moneyDrop);
+		c.setMoney(c.getMoney() + money);
 		
 	}
-	
 	
     // attack damage
     public int getAttackDamage() {
@@ -99,11 +95,8 @@ public class Enemy {
 		return hp;
 	}
 	
-	void setDropMoney(int hp) {
-		this.hp = hp;
-	}
-
-	int getDropMoney() {
-		return moneyDrop;
+	// money
+	int getMoney() {
+		return money;
 	}
 }
