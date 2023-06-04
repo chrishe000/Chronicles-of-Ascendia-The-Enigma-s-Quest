@@ -84,7 +84,7 @@ public class Item {
         return heal;
     }
     
-    public void getHeal(int heal) {
+    public void setHeal(int heal) {
         this.heal = heal;
     }
     
@@ -92,7 +92,7 @@ public class Item {
         return uses;
     }
     
-    public void getUses(int uses) {
+    public void setUses(int uses) {
         this.uses = uses;
     }
 }
