@@ -44,7 +44,7 @@ public class Enemy {
 	// drop inventory
 	void die(MainCharacter c) {
 		if(hp <= 0) {
-			isAlive = false;
+			setAlive(false);
 		}
 		
 		for(Item i: drops) {
@@ -108,5 +108,19 @@ public class Enemy {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	/**
+	 * @return the isAlive
+	 */
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	/**
+	 * @param isAlive the isAlive to set
+	 */
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
 	}
 }
