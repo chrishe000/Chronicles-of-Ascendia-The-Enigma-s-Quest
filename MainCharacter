@@ -4,7 +4,7 @@
 import java.util.ArrayList;
 
 public class MainCharacter {
-	int attackDamage, abilityPower, hp, money;
+	int attackDamage, abilityPower, hp, money, defense;
 	boolean isAlive = true;
 	ArrayList<Item> inventory = new ArrayList<Item>();
 	
@@ -20,6 +20,10 @@ public class MainCharacter {
 	
 	public void attackAP(Enemy e) {
 		e.takeAPDamage(abilityPower);
+	}
+	
+	public void setDefense(int def) {
+		this.defense = def;
 	}
 	
 	public int calculateTotalAD() {
