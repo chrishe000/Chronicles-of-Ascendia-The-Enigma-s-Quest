@@ -1,17 +1,18 @@
 import java.util.ArrayList; // import the ArrayList class
-//Nishad Yedunuthula
 
 public class Dungeon {
 	
 	String name;// will be something like "LEVEL 1...2...3...etc"
 	int difficulty;// the difficulty of the dungeon
 	ArrayList<Character> monsterList;// the list of monsters in this dungeon
+	private String[] options;
 	
-	public Dungeon(String name, int difficulty, ArrayList<Character> monsterList) {
+	public Dungeon(String name, int difficulty, ArrayList<Character> monsterList, String[] options) {
 		
 		this.name = name;
-        	this.difficulty = difficulty;
-     		this.monsterList = monsterList;
+        this.difficulty = difficulty;
+        this.monsterList = monsterList;
+        this.options = options;
 	}
 	
 	void spawnList(){// sets the monsterlist that the dungeon has based on the difficulty of the dungeon
@@ -22,6 +23,9 @@ public class Dungeon {
 			//	
 		else if(difficulty == 3)
 			//etc...
+			
+
+		
 	}
 	
 	void monsterDefeated() {// when the main character beats a monster, it is removed from the arraylist
@@ -37,6 +41,13 @@ public class Dungeon {
 	ArrayList<Character> getDungeon(){// get method
 		
 		return monsterList;
-	}	
-		
+	}
+	
+	String[] getOptions() {
+		return options;
+	}
+	
+	
+	
+	
 }
