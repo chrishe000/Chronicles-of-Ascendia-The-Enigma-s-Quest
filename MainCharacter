@@ -6,7 +6,7 @@ import java.lang.Math;
 
 public class MainCharacter {
 	private int attackDamage, abilityPower, hp, money, defense, mana, progress;
-	boolean isAlive = true;
+	private boolean isAlive = true;
 	ArrayList<Item> inventory = new ArrayList<Item>();
 	
 	public MainCharacter(int ad, int ap, int hp, int money, int mana, int progress) {
@@ -15,7 +15,7 @@ public class MainCharacter {
 		this.hp = hp;
 		this.money = money;
 		this.mana = mana;
-		this.progress = progress;
+		this.setProgress(progress);
 	}
 	
 	// attack
@@ -107,8 +107,8 @@ public class MainCharacter {
 
 	// end game
 	public void die() {
-		isAlive = false;
-		progress = 0;
+		setAlive(false);
+		setProgress(0);
 	}
 	
 	// run away
@@ -119,5 +119,33 @@ public class MainCharacter {
 	// use item
 	public void useItem() {
 		
+	}
+
+	/**
+	 * @return the isAlive
+	 */
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	/**
+	 * @param isAlive the isAlive to set
+	 */
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	/**
+	 * @return the progress
+	 */
+	public int getProgress() {
+		return progress;
+	}
+
+	/**
+	 * @param progress the progress to set
+	 */
+	public void setProgress(int progress) {
+		this.progress = progress;
 	}
 }
