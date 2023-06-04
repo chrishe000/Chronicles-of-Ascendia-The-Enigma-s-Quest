@@ -6,6 +6,8 @@ public class Item {
     private String description;
     private int mana, cost, boostAD, boostAP, boostDef, heal, uses;
     
+
+
     public Item(String name, String description,int  mana, int cost,int boostAD,int boostAP,int boostDef,int heal,int uses) {
         this.name = name;
         this.description = description;
@@ -20,18 +22,7 @@ public class Item {
     }
     
     
-    public void useItem(MainCharacter c) {
-    	if(uses < 25) {
-    		uses--;
-    	}
-        
-    	c.setHP(c.getHP()+ heal);
-    	c.setAttackDamage(c.getAttackDamage() + boostAD);
-    	c.setAbilityPower(c.getAbilityPower() + boostAP);
-    	c.setDefense(c.getDefense() + boostDef);
-    	c.setMana(c.getMana() - mana);
-    }
-
+  
     public String getName() {
         return name;
     }
@@ -55,6 +46,8 @@ public class Item {
     public void setCost(int cost) {
         this.cost = cost;
     }
+    
+   
     
     public int getBoostAD() {
         return boostAD;
@@ -95,4 +88,6 @@ public class Item {
     public void setUses(int uses) {
         this.uses = uses;
     }
+
+   
 }
