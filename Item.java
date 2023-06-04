@@ -1,19 +1,37 @@
-// Author: Chris He
+// Author: Chris He, Nishad Yedunuthula 
 // Date: 5/29/2023
 
 public class Item {
     private String name;
     private String description;
-    private int cost;
-    private int ap;
-    private int ad;
-
-    public Item(String name, String description) {
+    private int mana, cost, boostAD, boostAP, boostDef, heal, uses;
+    
+    public Item(String name, String description,int  mana, int cost,int boostAD,int boostAP,int boostDef,int heal,int uses) {
         this.name = name;
         this.description = description;
+        this.mana = mana; // the mana cost of using the item
+        this.cost = cost;// the money it costs to buy or the money you get when selling
+        this.boostAD = boostAD;// the attack damage boost of this item when used
+        this.boostAP = boostAP;// the ability power boost of this item when used
+        this.boostDef = boostDef;// the defense boost of this item when used
+        this.heal = heal;// the amount healed when this item is used
+        this.uses = uses;// the amount of uses this item has
+        
+    }
+    
+    
+    public void useItem(MainCharacter c) {
+    	if(uses < 25) {
+    		uses--;
+    	}
+        
+    	c.setHp(c.getHp()+ heal);
+    	c.setAttackDamage(c.getAttackDamage() + boostAD);
+    	c.setAbilityPower(c.getAbilityPower() + boostAP);
+    	c.setDefense(c.getDefense() + boostDef);
+    	c.setMana(c.getMana() - mana);
     }
 
-    // name
     public String getName() {
         return name;
     }
@@ -22,7 +40,6 @@ public class Item {
         this.name = name;
     }
 
-    // description
     public String getDescription() {
         return description;
     }
@@ -31,7 +48,6 @@ public class Item {
         this.description = description;
     }
 
-    // cost
     public int getCost() {
         return cost;
     }
@@ -40,32 +56,45 @@ public class Item {
         this.cost = cost;
     }
     
-    // ability power
-    public int getAP() {
-        return ap;
+   
+    
+    public int getBoostAD() {
+        return boostAD;
     }
     
-    public void setAP(int ap) {
-        this.ap = ap;
+    public void setBoostAD(int boostAD) {
+        this.boostAD = boostAD;
     }
     
-    // attack damage
-    public int getAD() {
-        return ad;
+    public int getBoostAP() {
+        return boostAP;
     }
     
-    public void setAD(int ad) {
-        this.ad = ad;
-    }
-
-    // use
-    public void useHealPotion(MainCharacter m) {
-        m.hp = 0;
+    public void setBoostAP(int boostAP) {
+        this.boostAP = boostAP;
     }
     
-    public void useBoost(MainCharacter m, int ad, int ap, int def) {
-        m.attackDamage += ad;
-        m.abilityPower += ap;
-        m.defense += def;
+    public int getBoostDEF() {
+        return boostDef;
+    }
+    
+    public void setBoostDEF(int boostDef) {
+        this.boostDef = boostDef;
+    }
+    
+    public int getHeal() {
+        return heal;
+    }
+    
+    public void getHeal(int heal) {
+        this.heal = heal;
+    }
+    
+    public int getUses() {
+        return uses;
+    }
+    
+    public void getUses(int uses) {
+        this.uses = uses;
     }
 }
