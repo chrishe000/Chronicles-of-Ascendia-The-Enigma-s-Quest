@@ -4,12 +4,12 @@
 public class Skill {
     private String name;
     private int damage;
-    private int mana;
+    private int manaCost;
 
-    public Skill(String name, int damage, int mana) {
+    public Skill(String name, int damage, int manaCost) {
         this.name = name;
         this.damage = damage;
-        this.mana = mana;
+        this.manaCost = manaCost;
     }
 
     public String getName() {
@@ -28,16 +28,15 @@ public class Skill {
         this.damage = damage;
     }
     
-    public int getMana() {
-        return mana;
+    public int getmanaCost() {
+        return manaCost;
     }
 
-    public void setMana(int mana) {
-        this.mana = mana;
+    public void setmanaCost(int manaCost) {
+        this.manaCost = manaCost;
     }
 
-	public void use() {
-	    System.out.println("Using " + name);
-	    System.out.println("Consumed : " + mana + " mana");
+	public void use(Enemy e) {
+	    e.takeDamage(damage);
 	}
 }
