@@ -4,7 +4,7 @@
 import java.util.ArrayList;
 
 public class MainCharacter {
-	int attackDamage, abilityPower, hp, money, defense;
+	private int attackDamage, abilityPower, hp, money, defense;
 	boolean isAlive = true;
 	ArrayList<Item> inventory = new ArrayList<Item>();
 	
@@ -14,18 +14,53 @@ public class MainCharacter {
 		this.hp = hp;
 	}
 	
+	// attack
 	public void attackAD(Enemy e) {
 		e.takeADDamage(attackDamage);
 	}
 	
 	public void attackAP(Enemy e) {
-		e.takeAPDamage(abilityPower);
+		e.takeADDamage(abilityPower);
 	}
 	
-	public void setDefense(int def) {
-		this.defense = def;
+	// defense
+	public int getDefense() {
+		return this.defense;
 	}
 	
+	public void setDefense(int defense) {
+		this.defense = defense;
+	}
+	
+    // ability power
+    public int getAbilityPower() {
+        return abilityPower;
+    }
+    
+    public void setAP(int abilityPower) {
+        this.abilityPower = abilityPower;
+    }
+    
+    // attack damage
+    public int getAttackDamage() {
+        return attackDamage;
+    }
+    
+    public void setAttackDamage(int attackDamage) {
+        this.attackDamage = attackDamage;
+    }
+    
+	
+	// money
+	public int getMoney() {
+		return this.money;
+	}
+	
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	
+	// calculate and get stats
 	public int calculateTotalAD() {
 		int total = 0;
 		
@@ -52,6 +87,7 @@ public class MainCharacter {
 		return total;
 	}
 	
+	// take damage
 	public void takeDamage(int damage) {
 		hp = hp - damage;
 		
@@ -59,7 +95,13 @@ public class MainCharacter {
 			die();
 		}
 	}
+	
+	// add item
+	public void addItem(Item i) {
+		inventory.add(i);
+	}
 
+	// end game
 	public void die() {
 		isAlive = false;
 	}
