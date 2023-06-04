@@ -1,4 +1,5 @@
 import java.util.ArrayList; // import the ArrayList class
+//Nishad Yedunuthula
 
 public class Dungeon {
 	
@@ -9,8 +10,8 @@ public class Dungeon {
 	public Dungeon(String name, int difficulty, ArrayList<Character> monsterList) {
 		
 		this.name = name;
-        this.difficulty = difficulty;
-        this.monsterList = monsterList;
+        	this.difficulty = difficulty;
+     		this.monsterList = monsterList;
 	}
 	
 	void spawnList(){// sets the monsterlist that the dungeon has based on the difficulty of the dungeon
@@ -21,9 +22,6 @@ public class Dungeon {
 			//	
 		else if(difficulty == 3)
 			//etc...
-			
-
-		
 	}
 	
 	void monsterDefeated() {// when the main character beats a monster, it is removed from the arraylist
@@ -39,10 +37,6 @@ public class Dungeon {
 	ArrayList<Character> getDungeon(){// get method
 		
 		return monsterList;
-	}
-	
-	
-	
-	
-	
+	}	
+		
 }
