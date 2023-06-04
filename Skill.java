@@ -1,17 +1,18 @@
 // Author: Chris He
-// Date: 6/3/2023
+// Date: 6/4/2023
 
 public class Skill {
     private String name;
-    private int damage;
+    private int attackDamage, abilityPower;
     private int manaCost;
 
-    public Skill(String name, int damage, int manaCost) {
+    public Skill(String name, int attackDamage, int abilityPower, int manaCost) {
         this.name = name;
-        this.damage = damage;
+        this.attackDamage = attackDamage;
         this.manaCost = manaCost;
     }
 
+    // name
     public String getName() {
         return name;
     }
@@ -20,14 +21,25 @@ public class Skill {
         this.name = name;
     }
 
-    public int getDamage() {
-        return damage;
+    // attack damage
+    public int getAttackDamage() {
+        return attackDamage;
     }
     
-    public void setDamage(int damage) {
-        this.damage = damage;
+    public void setDamage(int attackDamage) {
+        this.attackDamage = attackDamage;
     }
     
+    // ability power
+    public int getAbilityPower() {
+        return abilityPower;
+    }
+    
+    public void setAbilityPower(int abilityPower) {
+        this.abilityPower = abilityPower;
+    }
+    
+    // mana cost
     public int getmanaCost() {
         return manaCost;
     }
@@ -36,7 +48,9 @@ public class Skill {
         this.manaCost = manaCost;
     }
 
+    // use
 	public void use(Enemy e) {
-	    e.takeDamage(damage);
+	    e.takeADDamage(attackDamage);
+	    e.takeAPDamage(abilityPower);
 	}
 }
