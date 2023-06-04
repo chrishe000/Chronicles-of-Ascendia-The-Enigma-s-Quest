@@ -25,7 +25,7 @@ public class Item {
     		uses--;
     	}
         
-    	c.setHp(c.getHp()+ heal);
+    	c.setHP(c.getHP()+ heal);
     	c.setAttackDamage(c.getAttackDamage() + boostAD);
     	c.setAbilityPower(c.getAbilityPower() + boostAP);
     	c.setDefense(c.getDefense() + boostDef);
@@ -55,8 +55,6 @@ public class Item {
     public void setCost(int cost) {
         this.cost = cost;
     }
-    
-   
     
     public int getBoostAD() {
         return boostAD;
