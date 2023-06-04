@@ -1,15 +1,55 @@
 import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.RenderingHints;
 import java.util.ArrayList;
 
+import javax.swing.AbstractButton;
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicButtonUI;
+
+//Franklin Wang, Nishad Yedunuthula
+
+class StyledButtonUI extends BasicButtonUI {
+
+    @Override
+    public void installUI (JComponent c) {
+        super.installUI(c);
+        AbstractButton button = (AbstractButton) c;
+        button.setOpaque(false);
+        button.setBorder(new EmptyBorder(5, 15, 5, 15));
+    }
+
+    @Override
+    public void paint (Graphics g, JComponent c) {
+        AbstractButton b = (AbstractButton) c;
+        paintBackground(g, b, b.getModel().isPressed() ? 2 : 0);
+        super.paint(g, c);
+    }
+
+    private void paintBackground (Graphics g, JComponent c, int yOffset) {
+        Dimension size = c.getSize();
+        Graphics2D g2 = (Graphics2D) g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setColor(new Color(200, 200, 200));
+        g.fillRoundRect(0, yOffset, size.width, size.height - yOffset, 10, 10);
+        
+        g.setColor(new Color(244, 244, 244));
+        g.fillRoundRect(0, yOffset, size.width , size.height + yOffset - 3, 10, 10);
+    }
+}
 
 public class Main extends JPanel {
 
@@ -35,7 +75,7 @@ public class Main extends JPanel {
 		ArrayList<Character> monsterList = new ArrayList<Character>();
 		Dungeon dungeon1 = new Dungeon("ez dungeon", 1, monsterList, options);
 		dungeons.add(dungeon1);
-		this.character = new MainCharacter(0,0,0,0);
+		this.character = new MainCharacter(0,0,0,0,0);
 		System.out.println("FASD");
 	}
 	
@@ -84,7 +124,10 @@ public class Main extends JPanel {
 	    int numberOfOptions = d.getOptions().length;
 
 	    for (int i = 0; i < numberOfOptions; i++) {
-	        buttonPanel.add(new JButton(d.getOptions()[i]));
+	    	
+	    	JButton button = new JButton(d.getOptions()[i]);
+	        button.setUI(new StyledButtonUI());
+	        buttonPanel.add(button);
 	    }
 
 	    int height = this.getHeight();
@@ -96,8 +139,8 @@ public class Main extends JPanel {
 
 
 	public void paintStats() {
-	    this.add(new JLabel("hp : " + character.hp + ", basic attack damage : " 
-	+ character.attackDamage + ", ability power : " + character.abilityPower), 
+	    this.add(new JLabel("hp : " + character.getHP() + ", basic attack damage : " 
+	+ character.getAttackDamage() + ", ability power : " + character.getAbilityPower()), 
 	    		BorderLayout.NORTH);
 	}
 	
