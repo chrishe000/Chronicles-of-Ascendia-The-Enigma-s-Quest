@@ -1,13 +1,11 @@
 // Author: Chris He, Nishad Yedunuthula 
-// Date: 5/29/2023
+// Date: 6/4/2023
 
 public class Item {
     private String name;
     private String description;
     private int mana, cost, boostAD, boostAP, boostDef, heal, uses;
     
-
-
     public Item(String name, String description,int  mana, int cost,int boostAD,int boostAP,int boostDef,int heal,int uses) {
         this.name = name;
         this.description = description;
@@ -18,11 +16,21 @@ public class Item {
         this.boostDef = boostDef;// the defense boost of this item when used
         this.heal = heal;// the amount healed when this item is used
         this.uses = uses;// the amount of uses this item has
-        
     }
     
-    
-  
+    public void useItem(MainCharacter c) {
+    	if(uses < 25) {
+    		uses--;
+    	}
+        
+    	c.setHP(c.getHP()+ heal);
+    	c.setAttackDamage(c.getAttackDamage() + boostAD);
+    	c.setAbilityPower(c.getAbilityPower() + boostAP);
+    	c.setDefense(c.getDefense() + boostDef);
+    	c.setMana(c.getMana() - mana);
+    }
+
+    // name
     public String getName() {
         return name;
     }
@@ -31,6 +39,7 @@ public class Item {
         this.name = name;
     }
 
+    // description
     public String getDescription() {
         return description;
     }
@@ -39,6 +48,7 @@ public class Item {
         this.description = description;
     }
 
+    // cost
     public int getCost() {
         return cost;
     }
@@ -47,8 +57,7 @@ public class Item {
         this.cost = cost;
     }
     
-   
-    
+    // boost
     public int getBoostAD() {
         return boostAD;
     }
@@ -73,6 +82,7 @@ public class Item {
         this.boostDef = boostDef;
     }
     
+    // heal
     public int getHeal() {
         return heal;
     }
@@ -81,6 +91,7 @@ public class Item {
         this.heal = heal;
     }
     
+    // usage
     public int getUses() {
         return uses;
     }
@@ -88,6 +99,4 @@ public class Item {
     public void setUses(int uses) {
         this.uses = uses;
     }
-
-   
 }
