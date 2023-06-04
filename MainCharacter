@@ -2,17 +2,20 @@
 // Date: 6/4/2023
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class MainCharacter {
-	private int attackDamage, abilityPower, hp, money, defense, mana;
+	private int attackDamage, abilityPower, hp, money, defense, mana, progress;
 	boolean isAlive = true;
 	ArrayList<Item> inventory = new ArrayList<Item>();
 	
-	public MainCharacter(int ad, int ap, int hp, int money, int mana) {
+	public MainCharacter(int ad, int ap, int hp, int money, int mana, int progress) {
 		attackDamage = ad;
 		abilityPower = ap;
 		this.hp = hp;
+		this.money = money;
 		this.mana = mana;
+		this.progress = progress;
 	}
 	
 	// attack
@@ -97,15 +100,6 @@ public class MainCharacter {
 		return total;
 	}
 	
-	// take damage
-	public void takeDamage(int damage) {
-		hp = hp - damage;
-		
-		if(hp <= 0) {
-			die();
-		}
-	}
-	
 	// add item
 	public void addItem(Item i) {
 		inventory.add(i);
@@ -114,5 +108,16 @@ public class MainCharacter {
 	// end game
 	public void die() {
 		isAlive = false;
+		progress = 0;
+	}
+	
+	// run away
+	public void retreat() {
+		hp = Math.abs(defense - hp);
+	}
+	
+	// use item
+	public void useItem() {
+		
 	}
 }
