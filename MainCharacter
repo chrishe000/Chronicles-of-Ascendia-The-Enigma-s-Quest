@@ -1,49 +1,32 @@
-// Author: Franklin Wang, Chris He, Nishad Yedunuthula
+// Author: Franklin Wang, Chris He
 // Date: 6/4/2023
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class MainCharacter {
 	private int attackDamage, abilityPower, hp, money, defense, mana, progress;
-	boolean isAlive = true;
-	ArrayList<Item> inventory = new ArrayList<Item>();
-	ArrayList<Integer> statstoremove = new ArrayList<Integer>();
-	boolean isBuffed = false;
+	private boolean isAlive = true;
+	private boolean isBuffed = false;
+	private ArrayList<Item> inventory = new ArrayList<Item>();
+	private ArrayList<Integer> statstoremove = new ArrayList<Integer>();
 	
 	public MainCharacter(int ad, int ap, int hp, int money, int mana, int progress) {
 		attackDamage = ad;
 		abilityPower = ap;
 		this.hp = hp;
+		this.money = money;
 		this.mana = mana;
-		this.progress = progress;
+		this.setProgress(progress);
 	}
 	
 	// attack
 	public void attackAD(Enemy e) {
 		e.takeADDamage(attackDamage);
-		
-		if(e.getHp() == 0 && isBuffed == true) {
-			
-			attackDamage -= statstoremove.get(0);
-			abilityPower -= statstoremove.get(1);
-			defense -= statstoremove.get(2);
-			statstoremove.clear();
-			isBuffed = false;
-
-		}
 	}
 	
 	public void attackAP(Enemy e) {
 		e.takeAPDamage(abilityPower);
-		
-		if(e.getHp() == 0 && isBuffed == true) {
-			
-			attackDamage -= statstoremove.get(0);
-			abilityPower -= statstoremove.get(1);
-			defense -= statstoremove.get(2);
-			statstoremove.clear();
-			isBuffed = false;
-		}
 	}
 	
 	// defense
@@ -119,15 +102,6 @@ public class MainCharacter {
 		return total;
 	}
 	
-	// take damage
-	public void takeDamage(int damage) {
-		hp = hp - damage;
-		
-		if(hp <= 0) {
-			die();
-		}
-	}
-	
 	// add item
 	public void addItem(Item i) {
 		inventory.add(i);
@@ -135,23 +109,26 @@ public class MainCharacter {
 
 	// end game
 	public void die() {
-		isAlive = false;
-		progress  = 0;
+		setAlive(false);
+		setProgress(0);
 	}
 	
+	// run away
+	public void retreat() {
+		hp = Math.abs(defense - hp);
+	}
 	
+	// use item
 	public void useItem(Item item) {
-		
 		if(item.getUses() < 25) {
     		item.setUses(item.getUses() - 1);
-    	}
+		}
 		
 		if(item.getUses() == 0) {
-			
 			inventory.remove(item);
 		}
-    	
-    	hp += item.getHeal();
+		
+		hp += item.getHeal();
     	attackDamage += item.getBoostAD();
     	abilityPower += item.getBoostAP();
     	defense += item.getBoostDEF();
@@ -159,8 +136,48 @@ public class MainCharacter {
     	statstoremove.add(item.getBoostAP());
     	statstoremove.add(item.getBoostDEF());
     	
-    	isBuffed = true;
-    	
-		
+    	setBuffed(true);
+	}
+
+	/**
+	 * @return the isAlive
+	 */
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	/**
+	 * @param isAlive the isAlive to set
+	 */
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	/**
+	 * @return the progress
+	 */
+	public int getProgress() {
+		return progress;
+	}
+
+	/**
+	 * @param progress the progress to set
+	 */
+	public void setProgress(int progress) {
+		this.progress = progress;
+	}
+
+	/**
+	 * @return the isBuffed
+	 */
+	public boolean isBuffed() {
+		return isBuffed;
+	}
+
+	/**
+	 * @param isBuffed the isBuffed to set
+	 */
+	public void setBuffed(boolean isBuffed) {
+		this.isBuffed = isBuffed;
 	}
 }
